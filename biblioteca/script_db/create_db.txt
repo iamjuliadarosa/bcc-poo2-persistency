@@ -1,0 +1,50 @@
+-- Criação da Tabela Autor
+CREATE TABLE Autor (
+    AutorID INT AUTO_INCREMENT PRIMARY KEY,
+    Nome VARCHAR(255) NOT NULL,
+    Email VARCHAR(255) NOT NULL
+);
+
+-- Criação da Tabela Editora
+CREATE TABLE Editora (
+    EditoraID INT AUTO_INCREMENT PRIMARY KEY,
+    Nome VARCHAR(255) NOT NULL,
+    Endereco VARCHAR(255) NOT NULL
+);
+
+-- Criação da Tabela Livro
+CREATE TABLE Livro (
+    ISBN BIGINT PRIMARY KEY,
+    Titulo VARCHAR(255) NOT NULL,
+    AutorID INT,
+    EditoraID INT,
+    FOREIGN KEY (AutorID) REFERENCES Autor(AutorID),
+    FOREIGN KEY (EditoraID) REFERENCES Editora(EditoraID)
+);
+
+-- Criação da Tabela Exemplar
+CREATE TABLE Exemplar (
+    Numero INT PRIMARY KEY,
+    LivroISBN BIGINT,
+    Disponivel BOOLEAN NOT NULL,
+    FOREIGN KEY (LivroISBN) REFERENCES Livro(ISBN)
+);
+
+-- Criação da Tabela Cliente
+CREATE TABLE Cliente (
+    ClienteID INT AUTO_INCREMENT PRIMARY KEY,
+    Nome VARCHAR(255) NOT NULL,
+    Email VARCHAR(255) NOT NULL
+);
+
+-- Criação da Tabela Emprestimo
+CREATE TABLE Emprestimo (
+    EmprestimoID INT AUTO_INCREMENT PRIMARY KEY,
+    ExemplarNumero INT,
+    ClienteID INT,
+    DataEmprestimo DATETIME NOT NULL,
+    DataDevolucao DATETIME NOT NULL,
+    Devolvido BOOLEAN NOT NULL,
+    FOREIGN KEY (ExemplarNumero) REFERENCES Exemplar(Numero),
+    FOREIGN KEY (ClienteID) REFERENCES Cliente(ClienteID)
+);
