@@ -9,13 +9,18 @@ namespace Biblioteca.Classes
 {
     public class Exemplar
     {
+        [JsonProperty("codigo")]
+        public int Codigo { get; set; }
         [JsonProperty("numero")]
         public int Numero { get; set; }
 
         [JsonProperty("livro")]
-        public Livro Livro { get; set; }
+        public long ISBN { get; set; }
 
         [JsonProperty("disponivel")]
-        public bool Disponivel { get; set; } = true;
+        public bool Disponivel { get; set; }
+
+        [JsonProperty("tipo")]
+        public bool Tipo { get; set; }
     }
 }

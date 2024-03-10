@@ -41,7 +41,7 @@ namespace Biblioteca.Forms {
             } else if (RB_Editora.Checked) {
                 InitDGV_Busca_Editora();
                 List<Editora> editoras = repository.BuscaEditoras(busca);
-                if (editoras != null && editoras.Count>0) {
+                if (editoras != null && editoras.Count > 0) {
                     foreach (Editora editora in editoras) {
                         DGV_Busca.Rows.Add(new string[] {
                             editora.EditoraID.ToString(),
@@ -69,24 +69,32 @@ namespace Biblioteca.Forms {
         }
 
         private void DGV_Busca_Livro_Selection(object? sender, EventArgs e) {
+            List<Livro> livros = repository.BuscaLivros((sender as DataGridView).Rows[(e as DataGridViewCellEventArgs).RowIndex].Cells[0].Value.ToString());
+            if (livros != null && livros.Count > 0) {
+                OnEditeLivro(livros.First());
+            } else {
+                throw new Exception("Não foi possível localizar livro para edição.");
+            }
+        }
+        private void OnCreateLivro() {
             ViewLivro Livro = new ViewLivro();
-            Livro.Show();
+            if (Livro.ShowDialog() == DialogResult.OK) {
+                MessageBox.Show("Sucesso ao criar o Livro.");
+            } else {
+                MessageBox.Show("Operação cancelada.");
+            }
+        }
+        private void OnEditeLivro(Livro livro) {
+            ViewLivro Livro = new ViewLivro(livro);
+            if (Livro.ShowDialog() == DialogResult.OK) {
+                MessageBox.Show("Sucesso ao editar o Livro.");
+            } else {
+                MessageBox.Show("Operação cancelada.");
+            }
         }
 
-        protected void InitDGV_Busca_Autor() {
-            DGV_Busca.ColumnCount = 2;
-            DGV_Busca.Columns[0].Name = "ID";
-            DGV_Busca.Columns[1].Name = "Nome";
-            DGV_Busca.SelectionMode =
-            DataGridViewSelectionMode.FullRowSelect;
-            DGV_Busca.MultiSelect = false;
-            DGV_Busca.Rows.Clear();
-            DGV_Busca.CellClick -= DGV_Busca_Autor_Selection;
-            DGV_Busca.CellClick += DGV_Busca_Autor_Selection;
-        }
-        private void DGV_Busca_Autor_Selection(object? sender, EventArgs e) {
-            ViewAutor Autor = new ViewAutor();
-            Autor.Show();
+        private void livroToolStripMenuItem_Click(object sender, EventArgs e) {
+            OnCreateLivro();
         }
         protected void InitDGV_Busca_Editora() {
             DGV_Busca.ColumnCount = 2;
@@ -100,8 +108,69 @@ namespace Biblioteca.Forms {
             DGV_Busca.CellClick += DGV_Busca_Editora_Selection;
         }
         private void DGV_Busca_Editora_Selection(object? sender, EventArgs e) {
-            ViewEditora Editora = new ViewEditora();
-            Editora.Show();
+            List<Editora> editoras = repository.BuscaEditoras((sender as DataGridView).Rows[(e as DataGridViewCellEventArgs).RowIndex].Cells[0].Value.ToString());
+            if (editoras != null && editoras.Count > 0) {
+                OnEditeEditora(editoras.First());
+            } else {
+                throw new Exception("Não foi possível localizar livro para edição.");
+            }
+        }
+        private void OnCreateEditora() {
+            ViewEditora viewEditora = new ViewEditora();
+            if (viewEditora.ShowDialog() == DialogResult.OK) {
+                MessageBox.Show("Sucesso ao criar a Editora.");
+            }
+        }
+        private void OnEditeEditora(Editora editora) {
+            ViewEditora viewEditora = new ViewEditora(editora);
+            if (viewEditora.ShowDialog() == DialogResult.OK) {
+                MessageBox.Show("Sucesso ao editar a Editora.");
+            }
+        }
+        private void editoraToolStripMenuItem_Click(object sender, EventArgs e) {
+            OnCreateEditora();
+        }
+        protected void InitDGV_Busca_Autor() {
+            DGV_Busca.ColumnCount = 2;
+            DGV_Busca.Columns[0].Name = "ID";
+            DGV_Busca.Columns[1].Name = "Nome";
+            DGV_Busca.SelectionMode =
+            DataGridViewSelectionMode.FullRowSelect;
+            DGV_Busca.MultiSelect = false;
+            DGV_Busca.Rows.Clear();
+            DGV_Busca.CellClick -= DGV_Busca_Autor_Selection;
+            DGV_Busca.CellClick += DGV_Busca_Autor_Selection;
+        }
+        private void DGV_Busca_Autor_Selection(object? sender, EventArgs e) {
+            List<Autor> autores = repository.BuscaAutores((sender as DataGridView).Rows[(e as DataGridViewCellEventArgs).RowIndex].Cells[0].Value.ToString());
+            if (autores != null && autores.Count > 0) {
+                OnEditeAutor(autores.First());
+            } else {
+                throw new Exception("Não foi possível localizar livro para edição.");
+            }
+        }
+        private void OnCreateAutor() {
+            ViewAutor viewAutor = new ViewAutor();
+            if (viewAutor.ShowDialog() == DialogResult.OK) {
+                MessageBox.Show("Sucesso ao criar o Autor.");
+            } else {
+                MessageBox.Show("Operação cancelada.");
+            }
+        }
+        private void OnEditeAutor(Autor autor) {
+            ViewAutor viewAutor = new ViewAutor(autor);
+            if (viewAutor.ShowDialog() == DialogResult.OK) {
+                MessageBox.Show("Sucesso ao editar o Autor.");
+            } else {
+                MessageBox.Show("Operação cancelada.");
+            }
+        }
+        private void autorToolStripMenuItem_Click(object sender, EventArgs e) {
+            OnCreateAutor();
+        }
+
+        private void clienteToolStripMenuItem_Click(object sender, EventArgs e) {
+
         }
     }
 }

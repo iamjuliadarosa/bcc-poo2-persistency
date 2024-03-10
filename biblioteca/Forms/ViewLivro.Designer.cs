@@ -26,8 +26,7 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
-        {
+        private void InitializeComponent() {
             label11 = new Label();
             DGV_Exemplares = new DataGridView();
             BT_Livro_Apagar = new Button();
@@ -41,6 +40,7 @@
             TB_Livro_Titulo = new TextBox();
             label1 = new Label();
             panel1 = new Panel();
+            BT_Add_Exemplares = new Button();
             ((System.ComponentModel.ISupportInitialize)DGV_Exemplares).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -72,6 +72,7 @@
             BT_Livro_Apagar.TabIndex = 19;
             BT_Livro_Apagar.Text = "Apagar";
             BT_Livro_Apagar.UseVisualStyleBackColor = true;
+            BT_Livro_Apagar.Click += BT_Livro_Apagar_Click;
             // 
             // BT_Livro_Salvar
             // 
@@ -81,6 +82,7 @@
             BT_Livro_Salvar.TabIndex = 17;
             BT_Livro_Salvar.Text = "Salvar";
             BT_Livro_Salvar.UseVisualStyleBackColor = true;
+            BT_Livro_Salvar.Click += BT_Livro_Salvar_Click;
             // 
             // TB_Livro_ISBN
             // 
@@ -160,6 +162,7 @@
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel1.BackColor = SystemColors.ControlLightLight;
+            panel1.Controls.Add(BT_Add_Exemplares);
             panel1.Controls.Add(label11);
             panel1.Controls.Add(BT_Livro_Apagar);
             panel1.Controls.Add(BT_Livro_Salvar);
@@ -177,14 +180,24 @@
             panel1.Size = new Size(504, 428);
             panel1.TabIndex = 22;
             // 
-            // Livro
+            // BT_Add_Exemplares
+            // 
+            BT_Add_Exemplares.Location = new Point(335, 145);
+            BT_Add_Exemplares.Name = "BT_Add_Exemplares";
+            BT_Add_Exemplares.Size = new Size(156, 23);
+            BT_Add_Exemplares.TabIndex = 22;
+            BT_Add_Exemplares.Text = "Adicionar Exemplares";
+            BT_Add_Exemplares.UseVisualStyleBackColor = true;
+            // 
+            // ViewLivro
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(528, 442);
             Controls.Add(panel1);
-            Name = "Livro";
+            Name = "ViewLivro";
             Text = "Livro";
+            Load += ViewLivro_Load;
             ((System.ComponentModel.ISupportInitialize)DGV_Exemplares).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -206,5 +219,6 @@
         private TextBox TB_Livro_Titulo;
         private Label label1;
         private Panel panel1;
+        private Button BT_Add_Exemplares;
     }
 }

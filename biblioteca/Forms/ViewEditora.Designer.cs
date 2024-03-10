@@ -28,7 +28,7 @@
             TB_Editora_Nome = new TextBox();
             label7 = new Label();
             panel1 = new Panel();
-            textBox1 = new TextBox();
+            TB_ID = new TextBox();
             label1 = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -51,6 +51,7 @@
             BT_Editora_Salvar.TabIndex = 24;
             BT_Editora_Salvar.Text = "Salvar";
             BT_Editora_Salvar.UseVisualStyleBackColor = true;
+            BT_Editora_Salvar.Click += BT_Editora_Salvar_Click;
             // 
             // TB_Editora_Nome
             // 
@@ -71,7 +72,7 @@
             // panel1
             // 
             panel1.BackColor = SystemColors.ControlLightLight;
-            panel1.Controls.Add(textBox1);
+            panel1.Controls.Add(TB_ID);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(BT_Editora_Apagar);
             panel1.Controls.Add(BT_Editora_Salvar);
@@ -82,12 +83,14 @@
             panel1.Size = new Size(359, 140);
             panel1.TabIndex = 28;
             // 
-            // textBox1
+            // TB_ID
             // 
-            textBox1.Location = new Point(78, 12);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(94, 23);
-            textBox1.TabIndex = 28;
+            TB_ID.Location = new Point(78, 12);
+            TB_ID.Name = "TB_ID";
+            TB_ID.ReadOnly = true;
+            TB_ID.Size = new Size(94, 23);
+            TB_ID.TabIndex = 28;
+            TB_ID.Text = "0";
             // 
             // label1
             // 
@@ -106,6 +109,7 @@
             Controls.Add(panel1);
             Name = "ViewEditora";
             Text = "Editora";
+            Load += ViewEditora_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);
@@ -118,7 +122,7 @@
         private TextBox TB_Editora_Nome;
         private Label label7;
         private Panel panel1;
-        private TextBox textBox1;
+        private TextBox TB_ID;
         private Label label1;
     }
 }

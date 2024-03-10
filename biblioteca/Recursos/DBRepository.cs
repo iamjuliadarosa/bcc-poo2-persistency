@@ -1,5 +1,6 @@
 ﻿using Biblioteca.Classes;
 using MySql.Data.MySqlClient;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 
@@ -41,10 +42,7 @@ namespace Biblioteca.Recursos {
             }
         }
 
-        public void InserirLivro(long isbn, string titulo, string nomeAutor, string nomeEditora) {
-            int autorID = ObterID("Autor", "Nome", nomeAutor);
-
-            int editoraID = ObterID("Editora", "Nome", nomeEditora);
+        public void InserirLivro(long isbn, string titulo, int autorID, int editoraID) {
 
             string query = "INSERT INTO Livro (ISBN, Titulo, AutorID, EditoraID) VALUES (@ISBN, @Titulo, @AutorID, @EditoraID)";
 
@@ -126,8 +124,14 @@ namespace Biblioteca.Recursos {
             }
         }
 
-        public void AtualizarLivro(long isbn, string titulo, string nomeAutor, string nomeEditora) {
-            throw new NotImplementedException();
+        public void AtualizarLivro(long isbn, string titulo, int autorID, int editoraID) {
+            Open();
+
+            string query = string.Format("UPDATE Livro SET Titulo='{0}', AutorID={1}, EditoraID={2} WHERE ISBN={3};", titulo, autorID, editoraID, isbn);
+
+            using (MySqlCommand command = new MySqlCommand(query, connection)) {
+                command.ExecuteNonQuery();
+            }
         }
 
         public void AtualizarExemplar(int numero, long isbn, bool disponivel) {
@@ -266,17 +270,16 @@ namespace Biblioteca.Recursos {
                 string query = "SELECT * FROM Livro WHERE ISBN = @ISBN";
                 MySqlCommand command = new MySqlCommand(query, connection);
                 command.Parameters.AddWithValue("@ISBN", ISBN);
-
-                MySqlDataReader reader = command.ExecuteReader();
-                while (reader.Read()) {
+                List<Dictionary<string, string>> Rows = GetRows(command.ExecuteReader());
+                foreach (Dictionary<string, string> Row in Rows) {
                     return new List<Livro>()
                     {
                                 new Livro
                                 {
-                                    ISBN = reader.GetInt64("ISBN"),
-                                    Titulo = reader.GetString("Titulo"),
-                                    Autor = BuscarAutorPorID(int.Parse(reader.GetString("Autor"))),
-                                    Editora = BuscarEditoraPorID(int.Parse(reader.GetString("Editora")))
+                                    ISBN = long.Parse(Row.GetValueOrDefault("ISBN")),
+                                    Titulo = Row.GetValueOrDefault("Titulo"),
+                                    Autor = BuscarAutorPorID(int.Parse(Row.GetValueOrDefault("AutorID"))),
+                                    Editora = BuscarEditoraPorID(int.Parse(Row.GetValueOrDefault("EditoraID")))
                                 }
                             };
                 }
@@ -317,7 +320,11 @@ namespace Biblioteca.Recursos {
             List<Autor> result = new List<Autor>();
             string query = "SELECT * FROM Autor";
             if (nome != null) {
-                query = string.Format("SELECT * FROM Autor WHERE Nome like '%{0}%'", nome);
+                if (int.TryParse(nome, out int AutorID)) {
+                    query = string.Format("SELECT * FROM Autor WHERE AutorID = {0}", AutorID);
+                } else {
+                    query = string.Format("SELECT * FROM Autor WHERE Nome like '%{0}%'", nome);
+                }
             }
 
             MySqlCommand command = new MySqlCommand(query, connection);
@@ -336,12 +343,15 @@ namespace Biblioteca.Recursos {
 
         public List<Editora> BuscaEditoras(string nome = null) {
             Open();
-
+            List<Editora> result = new List<Editora>();
             string query = "SELECT * FROM Editora";
             if (nome != null) {
-                query = string.Format("SELECT * FROM Editora where Nome like '%{0}%'", nome);
+                if (int.TryParse(nome, out int EditoraID)) {
+                    query = string.Format("SELECT * FROM Editora where EditoraID = {0}", EditoraID);
+                } else {
+                    query = string.Format("SELECT * FROM Editora where Nome like '%{0}%'", nome);
+                }
             }
-            List<Editora> result = new List<Editora>();
             MySqlCommand command = new MySqlCommand(query, connection);
 
             List<Dictionary<string, string>> Rows = GetRows(command.ExecuteReader());
@@ -353,7 +363,6 @@ namespace Biblioteca.Recursos {
                 };
                 result.Add(editora);
             }
-
             return result;
         }
 
@@ -377,6 +386,52 @@ namespace Biblioteca.Recursos {
 
                 return null;
             }
+        }
+        public void CreateEditora(Editora editora) {
+            List<Editora> Editoras = BuscaEditoras(editora.EditoraID.ToString());
+            if (Editoras != null && Editoras.Count > 0) {
+                AtualizarEditora(editora.EditoraID, editora.Nome, "");
+            } else {
+                InserirEditora(editora.Nome, "");
+            }
+        }
+        public void CreateAutor(Autor autor) {
+            List<Autor> Autores = BuscaAutores(autor.ID.ToString());
+            if (Autores != null && Autores.Count > 0) {
+                AtualizarAutor(autor.ID, autor.Nome, "");
+            } else {
+                InserirAutor(autor.Nome, "");
+            }
+        }
+        public void CreateLivro(Livro livro) {
+            List<Livro> Livros = BuscaLivros(livro.ISBN.ToString());
+            if (Livros != null && Livros.Count > 0) {
+                AtualizarLivro(livro.ISBN, livro.Titulo, livro.Autor.ID, livro.Editora.EditoraID);
+            } else {
+                InserirLivro(livro.ISBN, livro.Titulo, livro.Autor.ID, livro.Editora.EditoraID);
+            }
+        }
+
+        public List<Exemplar> BuscaExemplares(long iSBN) {
+            Open();
+            List<Exemplar> result = new List<Exemplar>();
+            string query = string.Format("SELECT * FROM Exemplar WHERE LivroISBN = {0}", iSBN);
+
+            MySqlCommand command = new MySqlCommand(query, connection);
+
+            List<Dictionary<string, string>> Rows = GetRows(command.ExecuteReader());
+            foreach (Dictionary<string, string> row in Rows) {
+                Exemplar exemplar = new Exemplar {
+                    Numero = int.Parse(row.GetValueOrDefault("NumeroExemplar")),
+                    Codigo = int.Parse(row.GetValueOrDefault("CodigoExemplar")),
+                    ISBN = long.Parse(row.GetValueOrDefault("LivroISBN")),
+                    Disponivel = bool.Parse(row.GetValueOrDefault("Disponivel")),
+                    Tipo = bool.Parse(row.GetValueOrDefault("Tipo"))
+                };
+                result.Add(exemplar);
+            }
+
+            return result;
         }
     }
 }

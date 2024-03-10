@@ -32,19 +32,27 @@
             BT_Buscar = new Button();
             TB_Buscar = new TextBox();
             DGV_Busca = new DataGridView();
+            MS_Biblioteca = new MenuStrip();
+            cadastroToolStripMenuItem = new ToolStripMenuItem();
+            livroToolStripMenuItem = new ToolStripMenuItem();
+            editoraToolStripMenuItem = new ToolStripMenuItem();
+            autorToolStripMenuItem = new ToolStripMenuItem();
+            clienteToolStripMenuItem = new ToolStripMenuItem();
+            emprestimosToolStripMenuItem = new ToolStripMenuItem();
             tabControl1.SuspendLayout();
             TP_Buscar.SuspendLayout();
             GB_TipoBusca.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DGV_Busca).BeginInit();
+            MS_Biblioteca.SuspendLayout();
             SuspendLayout();
             // 
             // tabControl1
             // 
             tabControl1.Controls.Add(TP_Buscar);
-            tabControl1.Location = new Point(12, 12);
+            tabControl1.Location = new Point(12, 40);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(776, 426);
+            tabControl1.Size = new Size(776, 398);
             tabControl1.TabIndex = 3;
             // 
             // TP_Buscar
@@ -56,7 +64,7 @@
             TP_Buscar.Location = new Point(4, 24);
             TP_Buscar.Name = "TP_Buscar";
             TP_Buscar.Padding = new Padding(3);
-            TP_Buscar.Size = new Size(768, 398);
+            TP_Buscar.Size = new Size(768, 370);
             TP_Buscar.TabIndex = 0;
             TP_Buscar.Text = "Buscar";
             TP_Buscar.UseVisualStyleBackColor = true;
@@ -131,12 +139,65 @@
             DGV_Busca.Size = new Size(756, 287);
             DGV_Busca.TabIndex = 8;
             // 
+            // MS_Biblioteca
+            // 
+            MS_Biblioteca.BackColor = SystemColors.ControlLightLight;
+            MS_Biblioteca.Items.AddRange(new ToolStripItem[] { cadastroToolStripMenuItem, emprestimosToolStripMenuItem });
+            MS_Biblioteca.Location = new Point(0, 0);
+            MS_Biblioteca.Name = "MS_Biblioteca";
+            MS_Biblioteca.Size = new Size(800, 24);
+            MS_Biblioteca.TabIndex = 4;
+            MS_Biblioteca.Text = "Menu";
+            // 
+            // cadastroToolStripMenuItem
+            // 
+            cadastroToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { livroToolStripMenuItem, editoraToolStripMenuItem, autorToolStripMenuItem, clienteToolStripMenuItem });
+            cadastroToolStripMenuItem.Name = "cadastroToolStripMenuItem";
+            cadastroToolStripMenuItem.Size = new Size(66, 20);
+            cadastroToolStripMenuItem.Text = "Cadastro";
+            // 
+            // livroToolStripMenuItem
+            // 
+            livroToolStripMenuItem.Name = "livroToolStripMenuItem";
+            livroToolStripMenuItem.Size = new Size(180, 22);
+            livroToolStripMenuItem.Text = "Livro";
+            livroToolStripMenuItem.Click += livroToolStripMenuItem_Click;
+            // 
+            // editoraToolStripMenuItem
+            // 
+            editoraToolStripMenuItem.Name = "editoraToolStripMenuItem";
+            editoraToolStripMenuItem.Size = new Size(180, 22);
+            editoraToolStripMenuItem.Text = "Editora";
+            editoraToolStripMenuItem.Click += editoraToolStripMenuItem_Click;
+            // 
+            // autorToolStripMenuItem
+            // 
+            autorToolStripMenuItem.Name = "autorToolStripMenuItem";
+            autorToolStripMenuItem.Size = new Size(180, 22);
+            autorToolStripMenuItem.Text = "Autor";
+            autorToolStripMenuItem.Click += autorToolStripMenuItem_Click;
+            // 
+            // clienteToolStripMenuItem
+            // 
+            clienteToolStripMenuItem.Name = "clienteToolStripMenuItem";
+            clienteToolStripMenuItem.Size = new Size(180, 22);
+            clienteToolStripMenuItem.Text = "Cliente";
+            clienteToolStripMenuItem.Click += clienteToolStripMenuItem_Click;
+            // 
+            // emprestimosToolStripMenuItem
+            // 
+            emprestimosToolStripMenuItem.Name = "emprestimosToolStripMenuItem";
+            emprestimosToolStripMenuItem.Size = new Size(88, 20);
+            emprestimosToolStripMenuItem.Text = "Emprestimos";
+            // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(tabControl1);
+            Controls.Add(MS_Biblioteca);
+            MainMenuStrip = MS_Biblioteca;
             Name = "Main";
             Text = "Main";
             tabControl1.ResumeLayout(false);
@@ -145,7 +206,10 @@
             GB_TipoBusca.ResumeLayout(false);
             GB_TipoBusca.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)DGV_Busca).EndInit();
+            MS_Biblioteca.ResumeLayout(false);
+            MS_Biblioteca.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -159,5 +223,12 @@
         private Button BT_Buscar;
         private TextBox TB_Buscar;
         private DataGridView DGV_Busca;
+        private MenuStrip MS_Biblioteca;
+        private ToolStripMenuItem cadastroToolStripMenuItem;
+        private ToolStripMenuItem livroToolStripMenuItem;
+        private ToolStripMenuItem editoraToolStripMenuItem;
+        private ToolStripMenuItem autorToolStripMenuItem;
+        private ToolStripMenuItem clienteToolStripMenuItem;
+        private ToolStripMenuItem emprestimosToolStripMenuItem;
     }
 }

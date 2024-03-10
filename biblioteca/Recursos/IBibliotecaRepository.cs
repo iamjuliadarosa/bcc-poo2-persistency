@@ -11,14 +11,14 @@ namespace Biblioteca.Recursos
     {
         void InserirAutor(string nome, string email);
         void InserirEditora(string nome, string endereco);
-        void InserirLivro(long isbn, string titulo, string nomeAutor, string nomeEditora);
+        void InserirLivro(long isbn, string titulo, int autorID, int editoraID);
         void InserirExemplar(int numero, long isbn, bool disponivel);
         void InserirCliente(string nome, string email);
         void InserirEmprestimo(int exemplarNumero, int clienteID, DateTime dataEmprestimo, DateTime dataDevolucao, bool devolvido);
 
         void AtualizarAutor(int autorID, string nome, string email);
         void AtualizarEditora(int editoraID, string nome, string endereco);
-        void AtualizarLivro(long isbn, string titulo, string nomeAutor, string nomeEditora);
+        void AtualizarLivro(long isbn, string titulo, int autorID, int editoraID);
         void AtualizarExemplar(int numero, long isbn, bool disponivel);
         void AtualizarCliente(int clienteID, string nome, string email);
         void AtualizarEmprestimo(int emprestimoID, int exemplarNumero, int clienteID, DateTime dataEmprestimo, DateTime dataDevolucao, bool devolvido);
@@ -34,5 +34,9 @@ namespace Biblioteca.Recursos
         public List<Livro> BuscaLivros(string search);
         public List<Autor> BuscaAutores(string search = null);
         public List<Editora> BuscaEditoras(string search = null);
+        public void CreateEditora(Editora editora);
+        public void CreateAutor(Autor autor);
+        public void CreateLivro(Livro livro);
+        public List<Exemplar> BuscaExemplares(long iSBN);
     }
 }
