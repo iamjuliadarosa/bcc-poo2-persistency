@@ -1,6 +1,6 @@
 ﻿namespace Biblioteca.Forms
 {
-    partial class Livro
+    partial class ViewLivro
     {
         /// <summary>
         /// Required designer variable.

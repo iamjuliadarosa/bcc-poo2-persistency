@@ -4,7 +4,19 @@
     <Compile Update="Biblioteca.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\Livro.cs">
+    <Compile Update="Forms\ViewAutor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\ViewCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\ViewEditora.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\ViewLivro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Main.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

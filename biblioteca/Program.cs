@@ -11,7 +11,11 @@ namespace Biblioteca
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Biblioteca());
+            try {
+                Application.Run(new Biblioteca());
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

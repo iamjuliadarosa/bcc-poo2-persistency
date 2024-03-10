@@ -221,8 +221,7 @@ namespace Biblioteca.Recursos {
             if (reader.Read()) {
                 autor = new Autor {
                     ID = reader.GetInt32("AutorID"),
-                    Nome = reader.GetString("Nome"),
-                    Email = reader.GetString("Email")
+                    Nome = reader.GetString("Nome")
                 };
             }
             reader.Close();
@@ -241,8 +240,7 @@ namespace Biblioteca.Recursos {
             if (reader.Read()) {
                 editora = new Editora {
                     EditoraID = reader.GetInt32("EditoraID"),
-                    Nome = reader.GetString("Nome"),
-                    Endereco = reader.GetString("Endereco")
+                    Nome = reader.GetString("Nome")
                 };
             }
             reader.Close();
@@ -288,8 +286,8 @@ namespace Biblioteca.Recursos {
                 MySqlCommand command = new MySqlCommand(query, connection);
 
                 List<Dictionary<string, string>> Rows = GetRows(command.ExecuteReader());
-                
-                foreach (Dictionary<string,string> row in Rows) {
+
+                foreach (Dictionary<string, string> row in Rows) {
                     Autor autor = null;
                     if (row.TryGetValue("AutorID", out string? autor_id) && int.TryParse(autor_id, out int aid)) {
                         autor = BuscarAutorPorID(aid);
@@ -314,48 +312,49 @@ namespace Biblioteca.Recursos {
             }
             return null;
         }
-        public Autor BuscarAutorPorNome(string nome) {
+        public List<Autor> BuscaAutores(string nome = null) {
             Open();
-
-            string query = "SELECT * FROM Autor WHERE Nome = @Nome";
-
-            using (MySqlCommand command = new MySqlCommand(query, connection)) {
-                command.Parameters.AddWithValue("@Nome", nome);
-
-                using (MySqlDataReader reader = command.ExecuteReader()) {
-                    if (reader.Read()) {
-                        return new Autor {
-                            ID = reader.GetInt32("AutorID"),
-                            Nome = reader.GetString("Nome"),
-                            Email = reader.GetString("Email")
-                        };
-                    }
-                }
+            List<Autor> result = new List<Autor>();
+            string query = "SELECT * FROM Autor";
+            if (nome != null) {
+                query = string.Format("SELECT * FROM Autor WHERE Nome like '%{0}%'", nome);
             }
 
-            return null;
+            MySqlCommand command = new MySqlCommand(query, connection);
+
+            List<Dictionary<string, string>> Rows = GetRows(command.ExecuteReader());
+            foreach (Dictionary<string, string> row in Rows) {
+                Autor autor = new Autor {
+                    ID = int.Parse(row.GetValueOrDefault("AutorID")),
+                    Nome = row.GetValueOrDefault("Nome")
+                };
+                result.Add(autor);
+            }
+
+            return result;
         }
 
-        public Editora BuscarEditoraPorNome(string nome) {
+        public List<Editora> BuscaEditoras(string nome = null) {
             Open();
 
-            string query = "SELECT * FROM Editora WHERE Nome = @Nome";
-
-            using (MySqlCommand command = new MySqlCommand(query, connection)) {
-                command.Parameters.AddWithValue("@Nome", nome);
-
-                using (MySqlDataReader reader = command.ExecuteReader()) {
-                    if (reader.Read()) {
-                        return new Editora {
-                            EditoraID = reader.GetInt32("EditoraID"),
-                            Nome = reader.GetString("Nome"),
-                            Endereco = reader.GetString("Endereco")
-                        };
-                    }
-                }
-
-                return null;
+            string query = "SELECT * FROM Editora";
+            if (nome != null) {
+                query = string.Format("SELECT * FROM Editora where Nome like '%{0}%'", nome);
             }
+            List<Editora> result = new List<Editora>();
+            MySqlCommand command = new MySqlCommand(query, connection);
+
+            List<Dictionary<string, string>> Rows = GetRows(command.ExecuteReader());
+
+            foreach (Dictionary<string, string> row in Rows) {
+                Editora editora = new Editora {
+                    EditoraID = int.Parse(row.GetValueOrDefault("EditoraID")),
+                    Nome = row.GetValueOrDefault("Nome")
+                };
+                result.Add(editora);
+            }
+
+            return result;
         }
 
         public Cliente BuscarClientePorNome(string nome) {

@@ -9,8 +9,5 @@ namespace Biblioteca.Classes
         public int ID { get; set; }
         [JsonProperty("nome")]
         public string Nome { get; set; }
-
-        [JsonProperty("email")]
-        public string Email { get; set; }
     }
 }

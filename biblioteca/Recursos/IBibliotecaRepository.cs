@@ -30,9 +30,9 @@ namespace Biblioteca.Recursos
         void ExcluirCliente(int clienteID);
         void ExcluirEmprestimo(int emprestimoID);
 
-        Autor BuscarAutorPorNome(string nome);
-        Editora BuscarEditoraPorNome(string nome);
         Cliente BuscarClientePorNome(string nome);
         public List<Livro> BuscaLivros(string search);
+        public List<Autor> BuscaAutores(string search = null);
+        public List<Editora> BuscaEditoras(string search = null);
     }
 }

@@ -3,28 +3,16 @@
   "WorkspaceRootPath": "D:\\Documents\\repos\\bcc-poo2-persistency\\biblioteca\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A05B9AE6-8A9F-46C8-9966-02DD81AE4B9E}|Biblioteca.csproj|d:\\documents\\repos\\bcc-poo2-persistency\\biblioteca\\recursos\\dbrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A05B9AE6-8A9F-46C8-9966-02DD81AE4B9E}|Biblioteca.csproj|solutionrelative:recursos\\dbrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A05B9AE6-8A9F-46C8-9966-02DD81AE4B9E}|Biblioteca.csproj|d:\\documents\\repos\\bcc-poo2-persistency\\biblioteca\\forms\\vieweditora.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A05B9AE6-8A9F-46C8-9966-02DD81AE4B9E}|Biblioteca.csproj|solutionrelative:forms\\vieweditora.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A05B9AE6-8A9F-46C8-9966-02DD81AE4B9E}|Biblioteca.csproj|d:\\documents\\repos\\bcc-poo2-persistency\\biblioteca\\biblioteca.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A05B9AE6-8A9F-46C8-9966-02DD81AE4B9E}|Biblioteca.csproj|solutionrelative:biblioteca.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A05B9AE6-8A9F-46C8-9966-02DD81AE4B9E}|Biblioteca.csproj|d:\\documents\\repos\\bcc-poo2-persistency\\biblioteca\\classes\\editora.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A05B9AE6-8A9F-46C8-9966-02DD81AE4B9E}|Biblioteca.csproj|solutionrelative:classes\\editora.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A05B9AE6-8A9F-46C8-9966-02DD81AE4B9E}|Biblioteca.csproj|d:\\documents\\repos\\bcc-poo2-persistency\\biblioteca\\recursos\\ibibliotecarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A05B9AE6-8A9F-46C8-9966-02DD81AE4B9E}|Biblioteca.csproj|solutionrelative:recursos\\ibibliotecarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A05B9AE6-8A9F-46C8-9966-02DD81AE4B9E}|Biblioteca.csproj|d:\\documents\\repos\\bcc-poo2-persistency\\biblioteca\\recursos\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A05B9AE6-8A9F-46C8-9966-02DD81AE4B9E}|Biblioteca.csproj|solutionrelative:recursos\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A05B9AE6-8A9F-46C8-9966-02DD81AE4B9E}|Biblioteca.csproj|d:\\documents\\repos\\bcc-poo2-persistency\\biblioteca\\biblioteca.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{A05B9AE6-8A9F-46C8-9966-02DD81AE4B9E}|Biblioteca.csproj|solutionrelative:biblioteca.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A05B9AE6-8A9F-46C8-9966-02DD81AE4B9E}|Biblioteca.csproj|d:\\documents\\repos\\bcc-poo2-persistency\\biblioteca\\forms\\livro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{A05B9AE6-8A9F-46C8-9966-02DD81AE4B9E}|Biblioteca.csproj|solutionrelative:forms\\livro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{A05B9AE6-8A9F-46C8-9966-02DD81AE4B9E}|Biblioteca.csproj|d:\\documents\\repos\\bcc-poo2-persistency\\biblioteca\\forms\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A05B9AE6-8A9F-46C8-9966-02DD81AE4B9E}|Biblioteca.csproj|solutionrelative:forms\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,83 +22,46 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "IBibliotecaRepository.cs",
-              "DocumentMoniker": "D:\\Documents\\repos\\bcc-poo2-persistency\\biblioteca\\Recursos\\IBibliotecaRepository.cs",
-              "RelativeDocumentMoniker": "Recursos\\IBibliotecaRepository.cs",
-              "ToolTip": "D:\\Documents\\repos\\bcc-poo2-persistency\\biblioteca\\Recursos\\IBibliotecaRepository.cs",
-              "RelativeToolTip": "Recursos\\IBibliotecaRepository.cs",
-              "ViewState": "AQIAAB4AAAAAAAAAAAAWwCMAAAAmAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-09T23:40:12.576Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Repository.cs",
-              "DocumentMoniker": "D:\\Documents\\repos\\bcc-poo2-persistency\\biblioteca\\Recursos\\Repository.cs",
-              "RelativeDocumentMoniker": "Recursos\\Repository.cs",
-              "ToolTip": "D:\\Documents\\repos\\bcc-poo2-persistency\\biblioteca\\Recursos\\Repository.cs",
-              "RelativeToolTip": "Recursos\\Repository.cs",
-              "ViewState": "AQIAABUAAAAAAAAAAAASwB8AAAA0AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-09T23:40:27.267Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "DBRepository.cs",
-              "DocumentMoniker": "D:\\Documents\\repos\\bcc-poo2-persistency\\biblioteca\\Recursos\\DBRepository.cs",
-              "RelativeDocumentMoniker": "Recursos\\DBRepository.cs",
-              "ToolTip": "D:\\Documents\\repos\\bcc-poo2-persistency\\biblioteca\\Recursos\\DBRepository.cs",
-              "RelativeToolTip": "Recursos\\DBRepository.cs",
-              "ViewState": "AQIAANQAAAAAAAAAAAAUwNoAAAAlAAAA",
+              "Title": "ViewEditora.Designer.cs",
+              "DocumentMoniker": "D:\\Documents\\repos\\bcc-poo2-persistency\\biblioteca\\Forms\\ViewEditora.Designer.cs",
+              "RelativeDocumentMoniker": "Forms\\ViewEditora.Designer.cs",
+              "ToolTip": "D:\\Documents\\repos\\bcc-poo2-persistency\\biblioteca\\Forms\\ViewEditora.Designer.cs",
+              "RelativeToolTip": "Forms\\ViewEditora.Designer.cs",
+              "ViewState": "AQIAACYAAAAAAAAAAAAAADQAAAA9AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-09T23:40:12.804Z",
+              "WhenOpened": "2024-03-10T03:21:21.812Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Main.cs",
+              "DocumentMoniker": "D:\\Documents\\repos\\bcc-poo2-persistency\\biblioteca\\Forms\\Main.cs",
+              "RelativeDocumentMoniker": "Forms\\Main.cs",
+              "ToolTip": "D:\\Documents\\repos\\bcc-poo2-persistency\\biblioteca\\Forms\\Main.cs",
+              "RelativeToolTip": "Forms\\Main.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAzwGYAAAAxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-10T03:05:11.622Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Biblioteca.cs",
-              "DocumentMoniker": "D:\\Documents\\repos\\bcc-poo2-persistency\\biblioteca\\Biblioteca.cs",
-              "RelativeDocumentMoniker": "Biblioteca.cs",
-              "ToolTip": "D:\\Documents\\repos\\bcc-poo2-persistency\\biblioteca\\Biblioteca.cs",
-              "RelativeToolTip": "Biblioteca.cs",
-              "ViewState": "AQIAAF4AAAAAAAAAAAAAAFkAAAAYAAAA",
+              "Title": "Editora.cs",
+              "DocumentMoniker": "D:\\Documents\\repos\\bcc-poo2-persistency\\biblioteca\\Classes\\Editora.cs",
+              "RelativeDocumentMoniker": "Classes\\Editora.cs",
+              "ToolTip": "D:\\Documents\\repos\\bcc-poo2-persistency\\biblioteca\\Classes\\Editora.cs",
+              "RelativeToolTip": "Classes\\Editora.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAkAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-09T23:36:02.71Z",
+              "WhenOpened": "2024-03-10T02:51:39.485Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Biblioteca.cs [Projeto]",
-              "DocumentMoniker": "D:\\Documents\\repos\\bcc-poo2-persistency\\biblioteca\\Biblioteca.cs",
-              "RelativeDocumentMoniker": "Biblioteca.cs",
-              "ToolTip": "D:\\Documents\\repos\\bcc-poo2-persistency\\biblioteca\\Biblioteca.cs [Projeto]",
-              "RelativeToolTip": "Biblioteca.cs [Projeto]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-09T23:33:24.25Z",
-              "EditorCaption": " [Projeto]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Livro.cs [Projeto]",
-              "DocumentMoniker": "D:\\Documents\\repos\\bcc-poo2-persistency\\biblioteca\\Forms\\Livro.cs",
-              "RelativeDocumentMoniker": "Forms\\Livro.cs",
-              "ToolTip": "D:\\Documents\\repos\\bcc-poo2-persistency\\biblioteca\\Forms\\Livro.cs [Projeto]",
-              "RelativeToolTip": "Forms\\Livro.cs [Projeto]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-09T23:25:59.927Z",
-              "EditorCaption": " [Projeto]"
             }
           ]
         }

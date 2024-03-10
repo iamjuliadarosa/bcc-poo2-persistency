@@ -8,8 +8,5 @@ namespace Biblioteca.Classes
         public int EditoraID { get; set; }
         [JsonProperty("nome")]
         public string Nome { get; set; }
-
-        [JsonProperty("endereco")]
-        public string Endereco { get; set; }
     }
 }

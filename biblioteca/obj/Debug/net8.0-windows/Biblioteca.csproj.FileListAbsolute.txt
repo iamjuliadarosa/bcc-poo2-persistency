@@ -99,4 +99,8 @@ D:\Documents\repos\bcc-poo2-persistency\biblioteca\obj\Debug\net8.0-windows\refi
 D:\Documents\repos\bcc-poo2-persistency\biblioteca\obj\Debug\net8.0-windows\Biblioteca.pdb
 D:\Documents\repos\bcc-poo2-persistency\biblioteca\obj\Debug\net8.0-windows\Biblioteca.genruntimeconfig.cache
 D:\Documents\repos\bcc-poo2-persistency\biblioteca\obj\Debug\net8.0-windows\ref\Biblioteca.dll
-D:\Documents\repos\bcc-poo2-persistency\biblioteca\obj\Debug\net8.0-windows\Biblioteca.Forms.Livro.resources
+D:\Documents\repos\bcc-poo2-persistency\biblioteca\obj\Debug\net8.0-windows\Biblioteca.Forms.Main.resources
+D:\Documents\repos\bcc-poo2-persistency\biblioteca\obj\Debug\net8.0-windows\Biblioteca.Forms.ViewAutor.resources
+D:\Documents\repos\bcc-poo2-persistency\biblioteca\obj\Debug\net8.0-windows\Biblioteca.Forms.ViewCliente.resources
+D:\Documents\repos\bcc-poo2-persistency\biblioteca\obj\Debug\net8.0-windows\Biblioteca.Forms.ViewEditora.resources
+D:\Documents\repos\bcc-poo2-persistency\biblioteca\obj\Debug\net8.0-windows\Biblioteca.Forms.ViewLivro.resources
