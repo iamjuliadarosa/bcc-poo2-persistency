@@ -107,6 +107,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(381, 156);
             Controls.Add(panel1);
+            MaximumSize = new Size(397, 195);
+            MinimumSize = new Size(397, 195);
             Name = "ViewEditora";
             Text = "Editora";
             Load += ViewEditora_Load;

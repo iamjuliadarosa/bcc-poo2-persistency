@@ -82,5 +82,36 @@ namespace Biblioteca.Recursos {
         public List<Exemplar> BuscaExemplares(long iSBN) {
             return IBibliotecaRepository.BuscaExemplares(iSBN);
         }
+
+        public void CreateExemplares(Livro modelLivro, int quantidade_novos_exemplares) {
+            try {
+                IBibliotecaRepository.CreateExemplares(modelLivro.ISBN, quantidade_novos_exemplares);
+            } catch {
+                throw;
+            }
+        }
+
+        public Exemplar BuscaExemplar(int codigo_exemplar) {
+            return IBibliotecaRepository.BuscaExemplar(codigo_exemplar);
+        }
+        public void UpdateExemplar(Exemplar exemplar) {
+            try {
+                IBibliotecaRepository.UpdateExemplar(exemplar);
+            } catch {
+                throw;
+            }
+        }
+
+        public void CreateCliente(Cliente modelCliente) {
+            try {
+                IBibliotecaRepository.CreateCliente(modelCliente);
+            } catch {
+                throw;
+            }
+        }
+
+        public List<Cliente> BuscaClientes(string busca) {
+            return IBibliotecaRepository.BuscaClientes(busca);
+        }
     }
 }

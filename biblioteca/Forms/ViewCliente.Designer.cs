@@ -28,8 +28,10 @@
             TB_Cliente_Nome = new TextBox();
             label9 = new Label();
             panel1 = new Panel();
+            TB_EMail = new TextBox();
+            label2 = new Label();
+            TB_ID = new TextBox();
             label1 = new Label();
-            textBox1 = new TextBox();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -41,6 +43,7 @@
             BT_Cliente_Apagar.TabIndex = 25;
             BT_Cliente_Apagar.Text = "Apagar";
             BT_Cliente_Apagar.UseVisualStyleBackColor = true;
+            BT_Cliente_Apagar.Click += BT_Cliente_Apagar_Click;
             // 
             // BT_CLiente_Salvar
             // 
@@ -50,6 +53,7 @@
             BT_CLiente_Salvar.TabIndex = 24;
             BT_CLiente_Salvar.Text = "Salvar";
             BT_CLiente_Salvar.UseVisualStyleBackColor = true;
+            BT_CLiente_Salvar.Click += BT_CLiente_Salvar_Click;
             // 
             // TB_Cliente_Nome
             // 
@@ -70,7 +74,9 @@
             // panel1
             // 
             panel1.BackColor = SystemColors.ControlLightLight;
-            panel1.Controls.Add(textBox1);
+            panel1.Controls.Add(TB_EMail);
+            panel1.Controls.Add(label2);
+            panel1.Controls.Add(TB_ID);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(BT_Cliente_Apagar);
             panel1.Controls.Add(BT_CLiente_Salvar);
@@ -81,6 +87,31 @@
             panel1.Size = new Size(403, 160);
             panel1.TabIndex = 28;
             // 
+            // TB_EMail
+            // 
+            TB_EMail.Location = new Point(71, 84);
+            TB_EMail.Name = "TB_EMail";
+            TB_EMail.Size = new Size(317, 23);
+            TB_EMail.TabIndex = 30;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(14, 87);
+            label2.Name = "label2";
+            label2.Size = new Size(41, 15);
+            label2.TabIndex = 31;
+            label2.Text = "E-Mail";
+            // 
+            // TB_ID
+            // 
+            TB_ID.Location = new Point(71, 27);
+            TB_ID.Name = "TB_ID";
+            TB_ID.ReadOnly = true;
+            TB_ID.Size = new Size(100, 23);
+            TB_ID.TabIndex = 29;
+            TB_ID.Text = "0";
+            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -90,21 +121,17 @@
             label1.TabIndex = 28;
             label1.Text = "ID";
             // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(71, 27);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
-            textBox1.TabIndex = 29;
-            // 
             // ViewCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(425, 181);
             Controls.Add(panel1);
+            MaximumSize = new Size(441, 220);
+            MinimumSize = new Size(441, 220);
             Name = "ViewCliente";
             Text = "Cliente";
+            Load += ViewCliente_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);
@@ -117,7 +144,9 @@
         private TextBox TB_Cliente_Nome;
         private Label label9;
         private Panel panel1;
-        private TextBox textBox1;
+        private TextBox TB_ID;
         private Label label1;
+        private TextBox TB_EMail;
+        private Label label2;
     }
 }

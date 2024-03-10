@@ -9,6 +9,7 @@ namespace Biblioteca.Forms {
         }
         private void BT_Buscar_Click(object sender, EventArgs e) {
             string busca = TB_Buscar.Text.Trim();
+            RemoveEventsFromDGV_Busca();
             if (RB_Livro.Checked) {
                 InitDGV_Busca_Livro();
                 List<Livro> livros = repository.BuscaLivros(busca);
@@ -52,6 +53,46 @@ namespace Biblioteca.Forms {
                 } else {
                     MessageBox.Show("Não localizado resultados para a busca!");
                 }
+            }else if (RB_Cliente.Checked) {
+                InitDGV_Busca_Cliente();
+                List<Cliente> clientes = repository.BuscaClientes(busca);
+                if (clientes != null && clientes.Count > 0) {
+                    foreach (Cliente cliente in clientes) {
+                        DGV_Busca.Rows.Add(new string[] {
+                            cliente.ID.ToString(),
+                            cliente.Nome
+                        });
+                    }
+                    DGV_Busca.ClearSelection();
+                } else {
+                    MessageBox.Show("Não localizado resultados para a busca!");
+                }
+            }
+        }
+        private void RemoveEventsFromDGV_Busca() {
+            DGV_Busca.CellClick -= DGV_Busca_Cliente_Selection;
+            DGV_Busca.CellClick -= DGV_Busca_Livro_Selection;
+            DGV_Busca.CellClick -= DGV_Busca_Autor_Selection;
+            DGV_Busca.CellClick -= DGV_Busca_Editora_Selection;
+        }
+        private void InitDGV_Busca_Cliente() {
+            DGV_Busca.ColumnCount = 2;
+            DGV_Busca.Columns[0].Name = "ID";
+            DGV_Busca.Columns[1].Name = "Nome";
+            DGV_Busca.SelectionMode =
+            DataGridViewSelectionMode.FullRowSelect;
+            DGV_Busca.MultiSelect = false;
+            DGV_Busca.Rows.Clear();
+            DGV_Busca.EditMode = DataGridViewEditMode.EditProgrammatically;
+            DGV_Busca.CellClick -= DGV_Busca_Cliente_Selection;
+            DGV_Busca.CellClick += DGV_Busca_Cliente_Selection;
+        }
+        private void DGV_Busca_Cliente_Selection(object? sender, EventArgs e) {
+            List<Cliente> clientes = repository.BuscaClientes((sender as DataGridView).Rows[(e as DataGridViewCellEventArgs).RowIndex].Cells[0].Value.ToString());
+            if (clientes != null && clientes.Count > 0) {
+                OnEditeCliente(clientes.First());
+            } else {
+                throw new Exception("Não foi possível localizar Cliente para edição.");
             }
         }
         protected void InitDGV_Busca_Livro() {
@@ -64,6 +105,7 @@ namespace Biblioteca.Forms {
             DataGridViewSelectionMode.FullRowSelect;
             DGV_Busca.MultiSelect = false;
             DGV_Busca.Rows.Clear();
+            DGV_Busca.EditMode = DataGridViewEditMode.EditProgrammatically;
             DGV_Busca.CellClick -= DGV_Busca_Livro_Selection;
             DGV_Busca.CellClick += DGV_Busca_Livro_Selection;
         }
@@ -104,6 +146,7 @@ namespace Biblioteca.Forms {
             DataGridViewSelectionMode.FullRowSelect;
             DGV_Busca.MultiSelect = false;
             DGV_Busca.Rows.Clear();
+            DGV_Busca.EditMode = DataGridViewEditMode.EditProgrammatically;
             DGV_Busca.CellClick -= DGV_Busca_Editora_Selection;
             DGV_Busca.CellClick += DGV_Busca_Editora_Selection;
         }
@@ -138,6 +181,7 @@ namespace Biblioteca.Forms {
             DataGridViewSelectionMode.FullRowSelect;
             DGV_Busca.MultiSelect = false;
             DGV_Busca.Rows.Clear();
+            DGV_Busca.EditMode = DataGridViewEditMode.EditProgrammatically;
             DGV_Busca.CellClick -= DGV_Busca_Autor_Selection;
             DGV_Busca.CellClick += DGV_Busca_Autor_Selection;
         }
@@ -146,7 +190,7 @@ namespace Biblioteca.Forms {
             if (autores != null && autores.Count > 0) {
                 OnEditeAutor(autores.First());
             } else {
-                throw new Exception("Não foi possível localizar livro para edição.");
+                throw new Exception("Não foi possível localizar Autor para edição.");
             }
         }
         private void OnCreateAutor() {
@@ -168,9 +212,24 @@ namespace Biblioteca.Forms {
         private void autorToolStripMenuItem_Click(object sender, EventArgs e) {
             OnCreateAutor();
         }
-
+        private void OnCreateCliente() {
+            ViewCliente viewCliente = new ViewCliente();
+            if (viewCliente.ShowDialog() == DialogResult.OK) {
+                MessageBox.Show("Sucesso ao criar o Autor.");
+            } else {
+                MessageBox.Show("Operação cancelada.");
+            }
+        }
+        private void OnEditeCliente(Cliente Cliente) {
+            ViewCliente viewCliente = new ViewCliente(Cliente);
+            if (viewCliente.ShowDialog() == DialogResult.OK) {
+                MessageBox.Show("Sucesso ao editar o Cliente.");
+            } else {
+                MessageBox.Show("Operação cancelada.");
+            }
+        }
         private void clienteToolStripMenuItem_Click(object sender, EventArgs e) {
-
+            OnCreateCliente();
         }
     }
 }

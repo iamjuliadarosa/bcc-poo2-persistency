@@ -26,6 +26,7 @@
             tabControl1 = new TabControl();
             TP_Buscar = new TabPage();
             GB_TipoBusca = new GroupBox();
+            RB_Cliente = new RadioButton();
             RB_Editora = new RadioButton();
             RB_Autor = new RadioButton();
             RB_Livro = new RadioButton();
@@ -71,15 +72,27 @@
             // 
             // GB_TipoBusca
             // 
+            GB_TipoBusca.Controls.Add(RB_Cliente);
             GB_TipoBusca.Controls.Add(RB_Editora);
             GB_TipoBusca.Controls.Add(RB_Autor);
             GB_TipoBusca.Controls.Add(RB_Livro);
             GB_TipoBusca.Location = new Point(6, 10);
             GB_TipoBusca.Name = "GB_TipoBusca";
-            GB_TipoBusca.Size = new Size(197, 63);
+            GB_TipoBusca.Size = new Size(269, 63);
             GB_TipoBusca.TabIndex = 12;
             GB_TipoBusca.TabStop = false;
             GB_TipoBusca.Text = "Tipo de Busca";
+            // 
+            // RB_Cliente
+            // 
+            RB_Cliente.AutoSize = true;
+            RB_Cliente.Location = new Point(199, 29);
+            RB_Cliente.Name = "RB_Cliente";
+            RB_Cliente.Size = new Size(62, 19);
+            RB_Cliente.TabIndex = 16;
+            RB_Cliente.TabStop = true;
+            RB_Cliente.Text = "Cliente";
+            RB_Cliente.UseVisualStyleBackColor = true;
             // 
             // RB_Editora
             // 
@@ -159,28 +172,28 @@
             // livroToolStripMenuItem
             // 
             livroToolStripMenuItem.Name = "livroToolStripMenuItem";
-            livroToolStripMenuItem.Size = new Size(180, 22);
+            livroToolStripMenuItem.Size = new Size(111, 22);
             livroToolStripMenuItem.Text = "Livro";
             livroToolStripMenuItem.Click += livroToolStripMenuItem_Click;
             // 
             // editoraToolStripMenuItem
             // 
             editoraToolStripMenuItem.Name = "editoraToolStripMenuItem";
-            editoraToolStripMenuItem.Size = new Size(180, 22);
+            editoraToolStripMenuItem.Size = new Size(111, 22);
             editoraToolStripMenuItem.Text = "Editora";
             editoraToolStripMenuItem.Click += editoraToolStripMenuItem_Click;
             // 
             // autorToolStripMenuItem
             // 
             autorToolStripMenuItem.Name = "autorToolStripMenuItem";
-            autorToolStripMenuItem.Size = new Size(180, 22);
+            autorToolStripMenuItem.Size = new Size(111, 22);
             autorToolStripMenuItem.Text = "Autor";
             autorToolStripMenuItem.Click += autorToolStripMenuItem_Click;
             // 
             // clienteToolStripMenuItem
             // 
             clienteToolStripMenuItem.Name = "clienteToolStripMenuItem";
-            clienteToolStripMenuItem.Size = new Size(180, 22);
+            clienteToolStripMenuItem.Size = new Size(111, 22);
             clienteToolStripMenuItem.Text = "Cliente";
             clienteToolStripMenuItem.Click += clienteToolStripMenuItem_Click;
             // 
@@ -198,6 +211,8 @@
             Controls.Add(tabControl1);
             Controls.Add(MS_Biblioteca);
             MainMenuStrip = MS_Biblioteca;
+            MaximumSize = new Size(816, 489);
+            MinimumSize = new Size(816, 489);
             Name = "Main";
             Text = "Main";
             tabControl1.ResumeLayout(false);
@@ -230,5 +245,6 @@
         private ToolStripMenuItem autorToolStripMenuItem;
         private ToolStripMenuItem clienteToolStripMenuItem;
         private ToolStripMenuItem emprestimosToolStripMenuItem;
+        private RadioButton RB_Cliente;
     }
 }

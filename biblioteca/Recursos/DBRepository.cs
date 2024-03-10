@@ -1,5 +1,6 @@
 ﻿using Biblioteca.Classes;
 using MySql.Data.MySqlClient;
+using Mysqlx.Crud;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
@@ -178,15 +179,12 @@ namespace Biblioteca.Recursos {
                 command.ExecuteNonQuery();
             }
         }
-
         public void ExcluirLivro(long isbn) {
             throw new NotImplementedException();
         }
-
         public void ExcluirExemplar(int numero) {
             throw new NotImplementedException();
         }
-
         public void ExcluirCliente(int clienteID) {
             Open();
 
@@ -198,7 +196,6 @@ namespace Biblioteca.Recursos {
                 command.ExecuteNonQuery();
             }
         }
-
         public void ExcluirEmprestimo(int emprestimoID) {
             throw new NotImplementedException();
         }
@@ -411,7 +408,25 @@ namespace Biblioteca.Recursos {
                 InserirLivro(livro.ISBN, livro.Titulo, livro.Autor.ID, livro.Editora.EditoraID);
             }
         }
+        public Exemplar BuscaExemplar(int codigo_exemplar) {
+            Open();
+            string query = string.Format("SELECT * FROM Exemplar WHERE CodigoExemplar = {0}", codigo_exemplar);
 
+            MySqlCommand command = new MySqlCommand(query, connection);
+
+            List<Dictionary<string, string>> Rows = GetRows(command.ExecuteReader());
+            foreach (Dictionary<string, string> row in Rows) {
+                Exemplar exemplar = new Exemplar {
+                    Numero = int.Parse(row.GetValueOrDefault("NumeroExemplar")),
+                    Codigo = int.Parse(row.GetValueOrDefault("CodigoExemplar")),
+                    ISBN = long.Parse(row.GetValueOrDefault("LivroISBN")),
+                    Disponivel = bool.Parse(row.GetValueOrDefault("Disponivel")),
+                    Tipo = bool.Parse(row.GetValueOrDefault("Tipo"))
+                };
+                return exemplar;
+            }
+            return null;
+        }
         public List<Exemplar> BuscaExemplares(long iSBN) {
             Open();
             List<Exemplar> result = new List<Exemplar>();
@@ -431,6 +446,74 @@ namespace Biblioteca.Recursos {
                 result.Add(exemplar);
             }
 
+            return result;
+        }
+
+        public void CreateExemplares(long iSBN, int quantidade_novos_exemplares) {
+            Open();
+            List<Exemplar> result = new List<Exemplar>();
+            string query = string.Format("SELECT MAX(NumeroExemplar) as NUMERO FROM Exemplar WHERE LivroISBN = {0}", iSBN);
+
+            MySqlCommand command = new MySqlCommand(query, connection);
+            List<Dictionary<string,string>> Rows = GetRows(command.ExecuteReader());
+            int max = 0;
+            if (Rows != null && Rows.Count > 0) {
+                if(Rows.First().TryGetValue("NUMERO", out string value)){
+                    if (!string.IsNullOrEmpty(value)) {
+                        max = int.Parse(value);
+                    }
+                }
+            }
+
+            for (int i = 1; i <= quantidade_novos_exemplares; i++) {
+                query = string.Format("INSERT INTO Exemplar (NumeroExemplar, LivroISBN, Disponivel, Tipo) VALUES({0}, {1}, 1, 0);", max + i, iSBN);
+                command = new MySqlCommand(query, connection);
+                command.ExecuteNonQuery();
+            }
+
+        }
+        public void UpdateExemplar(Exemplar exemplar) {
+            string query = string.Format("UPDATE Exemplar SET Disponivel={0}, Tipo={1} WHERE CodigoExemplar={2};",
+                exemplar.Disponivel ? 1:0,exemplar.Tipo?1:0, exemplar.Codigo);
+            Open();
+
+            using (MySqlCommand command = new MySqlCommand(query, connection)) {
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public void CreateCliente(Cliente modelCliente) {
+            string query = string.Format("INSERT INTO Cliente (Nome, Email) VALUES('{0}', '{1}');",modelCliente.Nome, modelCliente.Email);
+            Open();
+
+            using (MySqlCommand command = new MySqlCommand(query, connection)) {
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public List<Cliente> BuscaClientes(string busca) {
+            Open();
+            List<Cliente> result = new List<Cliente>();
+            string query = "SELECT * FROM Cliente";
+            if (busca != null) {
+                if (int.TryParse(busca, out int ClienteID)) {
+                    query = string.Format("SELECT * FROM Cliente where ClienteID = {0}", ClienteID);
+                } else {
+                    query = string.Format("SELECT * FROM Cliente where Nome like '%{0}%'", busca);
+                }
+            }
+            MySqlCommand command = new MySqlCommand(query, connection);
+
+            List<Dictionary<string, string>> Rows = GetRows(command.ExecuteReader());
+
+            foreach (Dictionary<string, string> row in Rows) {
+                Cliente cliente = new Cliente {
+                    ID = int.Parse(row.GetValueOrDefault("ClienteID")),
+                    Nome = row.GetValueOrDefault("Nome"),
+                    Email = row.GetValueOrDefault("Email")
+                };
+                result.Add(cliente);
+            }
             return result;
         }
     }

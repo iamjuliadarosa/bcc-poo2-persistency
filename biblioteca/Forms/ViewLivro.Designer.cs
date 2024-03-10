@@ -188,6 +188,7 @@
             BT_Add_Exemplares.TabIndex = 22;
             BT_Add_Exemplares.Text = "Adicionar Exemplares";
             BT_Add_Exemplares.UseVisualStyleBackColor = true;
+            BT_Add_Exemplares.Click += BT_Add_Exemplares_Click;
             // 
             // ViewLivro
             // 
@@ -195,6 +196,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(528, 442);
             Controls.Add(panel1);
+            MaximumSize = new Size(544, 481);
+            MinimumSize = new Size(544, 481);
             Name = "ViewLivro";
             Text = "Livro";
             Load += ViewLivro_Load;

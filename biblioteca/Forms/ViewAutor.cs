@@ -35,6 +35,7 @@ namespace Biblioteca.Forms {
         private void BT_Autor_Salvar_Click(object sender, EventArgs e) {
             ModelAutor.Nome = TB_Autor_Nome.Text;
             repository.CreateAutor(ModelAutor);
+            DialogResult = DialogResult.OK;
             Close();
         }
         private void ViewAutor_Load(object sender, EventArgs e) {

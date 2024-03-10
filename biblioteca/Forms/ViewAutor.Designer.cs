@@ -107,6 +107,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(406, 153);
             Controls.Add(panel1);
+            MaximumSize = new Size(422, 192);
+            MinimumSize = new Size(422, 192);
             Name = "ViewAutor";
             Text = "Autor";
             Load += ViewAutor_Load;

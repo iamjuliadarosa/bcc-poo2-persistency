@@ -30,7 +30,6 @@ namespace Biblioteca.Recursos
         void ExcluirCliente(int clienteID);
         void ExcluirEmprestimo(int emprestimoID);
 
-        Cliente BuscarClientePorNome(string nome);
         public List<Livro> BuscaLivros(string search);
         public List<Autor> BuscaAutores(string search = null);
         public List<Editora> BuscaEditoras(string search = null);
@@ -38,5 +37,10 @@ namespace Biblioteca.Recursos
         public void CreateAutor(Autor autor);
         public void CreateLivro(Livro livro);
         public List<Exemplar> BuscaExemplares(long iSBN);
+        public void CreateExemplares(long iSBN, int quantidade_novos_exemplares);
+        public Exemplar BuscaExemplar(int codigo_exemplar);
+        public void UpdateExemplar(Exemplar exemplar);
+        public void CreateCliente(Cliente modelCliente);
+        public List<Cliente> BuscaClientes(string busca);
     }
 }
